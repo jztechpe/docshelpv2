@@ -17,6 +17,14 @@ export const localeOptions = [
   { id: 'enrtl', name: 'English RTL', direction: 'rtl' }
 ]
 
+export const defaultItems = 'itms'
+export const items = [
+  { id: 'Usuarios', name: 'Usuarios', direction: 'itms' },
+  { id: 'Producto', name: 'Producto', direction: 'itms' },
+  { id: 'Ordenes', name: 'Ordenes', direction: 'itms' },
+  { id: 'Coverage', name: 'Coverage', direction: 'itms' }
+]
+
 export const firebaseConfig = {
   apiKey: "AIzaSyDe94G7L-3soXVSpVbsYlB5DfYH2L91aTU",
   authDomain: "piaf-vue-login.firebaseapp.com",

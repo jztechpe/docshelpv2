@@ -21,25 +21,6 @@
       >
         <mobile-menu-icon />
       </a>
-      <div class="d-inline-block">
-        <b-dropdown
-          id="langddm"
-          class="ml-2"
-          variant="light"
-          size="sm"
-          toggle-class="language-button"
-        >
-          <template slot="button-content">
-            <span class="name">{{ $i18n.locale.toUpperCase() }}</span>
-          </template>
-          <b-dropdown-item
-            v-for="(l, index) in localeOptions"
-            :key="index"
-            @click="changeLocale(l.id, l.direction)"
-            >{{ l.name }}</b-dropdown-item
-          >
-        </b-dropdown>
-      </div>
     </div>
     <router-link class="navbar-logo" :to="adminRoot">
       <span class="logo d-none d-xs-block"></span>
@@ -104,6 +85,25 @@
             </vue-perfect-scrollbar>
           </b-dropdown>
         </div>
+              <div class="d-inline-block">
+        <b-dropdown
+          id="langddm"
+          class="ml-2"
+          variant="light"
+          size="sm"
+          toggle-class="language-button"
+        >
+          <template slot="button-content">
+            <span class="name">{{ $i18n.locale.toUpperCase() }}</span>
+          </template>
+          <b-dropdown-item
+            v-for="(l, index) in localeOptions"
+            :key="index"
+            @click="changeLocale(l.id, l.direction)"
+            >{{ l.name }}</b-dropdown-item
+          >
+        </b-dropdown>
+      </div>
         <div class="position-relative d-none d-sm-inline-block">
           <div class="btn-group">
             <b-button
