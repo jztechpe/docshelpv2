@@ -30,84 +30,43 @@
     </div>
 
     <div class="sub-menu">
-      <vue-perfect-scrollbar
-        class="scroll"
-        :settings="{ suppressScrollX: true, wheelPropagation: false }"
-      >
-        <ul
-          v-for="(item, itemIndex) in filteredMenuItems(menuItems)"
-          :class="{
-            'list-unstyled': true,
-            'd-block':
-              (selectedParentMenu === item.id && viewingParentMenu === '') ||
-              viewingParentMenu === item.id,
-          }"
-          :data-parent="item.id"
-          :key="`sub_${item.id}`"
-        >
-          <li
-            v-for="(sub, subIndex) in filteredMenuItems(item.subs)"
-            :key="`sub_${subIndex}`"
-            :class="{
-              'has-sub-item': sub.subs && sub.subs.length > 0,
-              active: $route.path.indexOf(sub.to) > -1,
-            }"
-          >
-            <!-- SIDEBAR LEVEL TWO -->
-            <a
-              v-if="sub.newWindow"
-              :href="sub.to"
-              rel="noopener noreferrer"
-              target="_blank"
-            >
-              <i :class="sub.icon" />
-              <span>{{ $t(sub.label) }}</span>
-            </a>
-            <template v-else-if="sub.subs && sub.subs.length > 0">
-              <b-link
-                v-b-toggle="`menu_${itemIndex}_${subIndex}`"
-                variant="link"
-                class="rotate-arrow-icon opacity-50"
-              >
-                <i class="simple-icon-arrow-down"></i>
-                <span class="d-inline-block">{{ $t(sub.label) }}</span>
-              </b-link>
-              <b-collapse visible :id="`menu_${itemIndex}_${subIndex}`">
-                <ul class="list-unstyled third-level-menu">
-                  <li
-                    v-for="(thirdLevelSub, thirdIndex) in filteredMenuItems(
-                      sub.subs
-                    )"
-                    :key="`third_${itemIndex}_${subIndex}_${thirdIndex}`"
-                    :class="{
-                      'third-level-menu': true,
-                      active: $route.path === thirdLevelSub.to,
-                    }"
-                  >
-                    <a
-                      v-if="thirdLevelSub.newWindow"
-                      :href="thirdLevelSub.to"
-                      rel="noopener noreferrer"
-                      target="_blank"
-                    >
-                      <i :class="thirdLevelSub.icon" />
-                      <span>{{ $t(thirdLevelSub.label) }}</span>
-                    </a>
-                    <router-link v-else :to="thirdLevelSub.to">
-                      <i :class="thirdLevelSub.icon" />
-                      <span>{{ $t(thirdLevelSub.label) }}</span>
-                    </router-link>
-                  </li>
-                </ul>
-              </b-collapse>
-            </template>
-            <router-link v-else :to="sub.to">
-              <i :class="sub.icon" />
-              <span>{{ $t(sub.label) }}</span>
-            </router-link>
-          </li>
-        </ul>
-      </vue-perfect-scrollbar>
+<template>
+  <div class="accordion" role="tablist">
+    <b-card no-body class="mb-1">
+      <b-card-header header-tag="header" class="p-1" role="tab">
+        <b-button block v-b-toggle.Producto variant="info">Producto</b-button>
+      </b-card-header>
+      <b-collapse id="Producto" visible accordion="my-accordion" role="tabpanel">
+        <b-card-body>
+          <b-card-text>I start opened because <code>visible</code> is <code>true</code></b-card-text>
+          <b-card-text>{{ text }}</b-card-text>
+        </b-card-body>
+      </b-collapse>
+    </b-card>
+
+    <b-card no-body class="mb-1">
+      <b-card-header header-tag="header" class="p-1" role="tab">
+        <b-button block v-b-toggle.Usuarios variant="info">Usuarios</b-button>
+      </b-card-header>
+      <b-collapse id="Usuarios" accordion="my-accordion" role="tabpanel">
+        <b-card-body>
+          <b-card-text>{{ text }}</b-card-text>
+        </b-card-body>
+      </b-collapse>
+    </b-card>
+
+    <b-card no-body class="mb-1">
+      <b-card-header header-tag="header" class="p-1" role="tab">
+        <b-button block v-b-toggle.Ordenes variant="info">Ordenes</b-button>
+      </b-card-header>
+      <b-collapse id="Ordenes" accordion="my-accordion" role="tabpanel">
+        <b-card-body>
+          <b-card-text>{{ text }}</b-card-text>
+        </b-card-body>
+      </b-collapse>
+    </b-card>
+  </div>
+</template>
     </div>
   </div>
 </template>
