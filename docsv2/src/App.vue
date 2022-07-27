@@ -1,20 +1,21 @@
 <template>
   <div id="app">
   <NavbarUno/>
-  <Sidebar/>
+  <SidebarUno/>
   </div>
   
 </template>
 
 <script>
-import Sidebar from './components/Sidebar.vue'
+
 import NavbarUno from './components/NavbarUno.vue'
+import SidebarUno from './components/SidebarUno.vue'
 
 export default {
   name: 'App',
   components: {
-    Sidebar,
-    NavbarUno
+    SidebarUno,
+    NavbarUno    
 }
 }
 </script>
